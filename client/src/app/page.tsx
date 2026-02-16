@@ -1,15 +1,21 @@
-import ProductList from "@/component/ProductList"
-import Image from "next/image"
+import ProductList from "@/component/ProductList";
+import Image from "next/image";
 
-const Homepage = () => {
+const Homepage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ category: string }>;
+}) => {
+
+  const category = (await searchParams).category
   return (
-    <div className=''>
+    <div className="">
       <div className="relative aspect-3/1 mb-12">
-        <Image src='/featured.png' alt="Featured product" fill/>
+        <Image src="/featured.png" alt="Featured product" fill />
       </div>
-      <ProductList />
+      <ProductList category={category}/>
     </div>
-  )
-}
+  );
+};
 
-export default Homepage
+export default Homepage;
