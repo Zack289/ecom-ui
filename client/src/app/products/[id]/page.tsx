@@ -20,6 +20,19 @@ const product: ProductType = {
   },
 };
 
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { id: string };
+}) => {
+  // TODO:get the product from db
+  // TEMPORARY
+  return {
+    title: product.name,
+    describe: product.description,
+  };
+};
+
 const ProductPage = async ({
   params,
   searchParams,
@@ -49,7 +62,11 @@ const ProductPage = async ({
         <p className="text-gray-500">{product.description}</p>
         <h2 className="text-2xl font-semibold">${product.price.toFixed(2)}</h2>
 
-        <ProductInteraction product={product} selectedSize={selectedSize} selectedColor={selectedColor}/>
+        <ProductInteraction
+          product={product}
+          selectedSize={selectedSize}
+          selectedColor={selectedColor}
+        />
 
         {/* CART INFO  */}
         <div className="flex items-center gap-2 mt-4">
@@ -70,7 +87,7 @@ const ProductPage = async ({
           />
         </div>
 
-         <p className="text-gray-500 text-xs">
+        <p className="text-gray-500 text-xs">
           By clicking Pay Now, you agree to our{" "}
           <span className="underline hover:text-black">Terms & Conditions</span>{" "}
           and <span className="underline hover:text-black">Privacy Policy</span>
