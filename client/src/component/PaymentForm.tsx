@@ -5,9 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-const PaymentForm = ({
-
-}) => {
+const PaymentForm = ({}) => {
   const {
     register,
     handleSubmit,
@@ -18,9 +16,7 @@ const PaymentForm = ({
 
   const router = useRouter();
 
-  const handlePaymentForm: SubmitHandler<PaymentFormInputs> = (data) => {
-   
-  };
+  const handlePaymentForm: SubmitHandler<PaymentFormInputs> = (data) => {};
 
   return (
     <form
@@ -29,7 +25,10 @@ const PaymentForm = ({
     >
       <div className="flex flex-col gap-1">
         {/* CARD HOLDER NAME  */}
-        <label htmlFor="cardHolder" className="text-xs text-gray-500 font-medium">
+        <label
+          htmlFor="cardHolder"
+          className="text-xs text-gray-500 font-medium"
+        >
           Name on Card
         </label>
         <input
@@ -46,7 +45,10 @@ const PaymentForm = ({
 
       {/* CARD NUMBER  */}
       <div className="flex flex-col gap-1">
-        <label htmlFor="cardNumber" className="text-xs text-gray-500 font-medium">
+        <label
+          htmlFor="cardNumber"
+          className="text-xs text-gray-500 font-medium"
+        >
           Card Number
         </label>
         <input
@@ -63,7 +65,10 @@ const PaymentForm = ({
 
       {/* EXPIRATION DATE  */}
       <div className="flex flex-col gap-1">
-        <label htmlFor="expirationDate" className="text-xs text-gray-500 font-medium">
+        <label
+          htmlFor="expirationDate"
+          className="text-xs text-gray-500 font-medium"
+        >
           Expiration Date
         </label>
         <input
@@ -74,7 +79,9 @@ const PaymentForm = ({
           {...register("expirationDate")}
         />
         {errors.expirationDate && (
-          <p className="text-xs text-red-500">{errors.expirationDate.message}</p>
+          <p className="text-xs text-red-500">
+            {errors.expirationDate.message}
+          </p>
         )}
       </div>
 
@@ -98,8 +105,20 @@ const PaymentForm = ({
       {/* CARD IMAGES  */}
       <div className="flex items-center gap-2 mt-4">
         {/* <Image src="/klarna.png" alt="" width={50} height={25} className="rounded-md"/> */}
-        <Image src="/cards.png" alt="" width={50} height={25} className="rounded-md"/>
-        <Image src="/stripe.png" alt="" width={50} height={25} className="rounded-md"/>
+        <Image
+          src="/cards.png"
+          alt=""
+          width={50}
+          height={25}
+          className="rounded-md"
+        />
+        <Image
+          src="/stripe.png"
+          alt=""
+          width={50}
+          height={25}
+          className="rounded-md"
+        />
       </div>
 
       {/* BUTTON  */}

@@ -87,7 +87,7 @@ const CartPage = () => {
 
   const activeStep = parseInt(searchParams.get("step") || "1");
 
-  const {cart, removeFromCart} = useCartStore()
+  const { cart, removeFromCart } = useCartStore();
   return (
     <div className="flex flex-col gap-8 items-center justify-center mt-12">
       {/* TITLE  */}
@@ -156,13 +156,16 @@ const CartPage = () => {
                 </div>
 
                 {/* DELETE BUTTON  */}
-                <button onClick={()=>removeFromCart(item)} className="w-8 h-8 rounded-full bg-red-100 hover:bg-red-200 transition-all duration-300 text-red-400 flex items-center justify-center cursor-pointer">
+                <button
+                  onClick={() => removeFromCart(item)}
+                  className="w-8 h-8 rounded-full bg-red-100 hover:bg-red-200 transition-all duration-300 text-red-400 flex items-center justify-center cursor-pointer"
+                >
                   <Trash2 className="w-3 h-3" />
                 </button>
               </div>
             ))
           ) : activeStep === 2 ? (
-            <ShippingForm setShippingForm={setShippingForm}/>
+            <ShippingForm setShippingForm={setShippingForm} />
           ) : activeStep === 3 && shippingForm ? (
             <PaymentForm />
           ) : (

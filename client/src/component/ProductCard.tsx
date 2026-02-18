@@ -14,18 +14,18 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     color: product.colors[0],
   });
 
-  const {addToCart} = useCartStore();
+  const { addToCart } = useCartStore();
 
-  const handleAddToCart = ()=>{
+  const handleAddToCart = () => {
     addToCart({
       ...product,
       quantity: 1,
       selectedColor: productTypes.color,
-      selectedSize: productTypes.size
+      selectedSize: productTypes.size,
     });
 
-    toast.success("Product added to cart.")
-  }
+    toast.success("Product added to cart.");
+  };
 
   const handleProductType = ({
     type,
@@ -34,6 +34,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     type: "size" | "color";
     value: string;
   }) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setProductTypes((prev: any) => ({
       ...prev,
       [type]: value,
@@ -105,7 +106,10 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         <div className="flex items center justify-between">
           <p className="font-medium">${product.price.toFixed(2)}</p>
 
-          <button onClick={handleAddToCart} className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2">
+          <button
+            onClick={handleAddToCart}
+            className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2"
+          >
             <ShoppingCart className="w-4 h-4" />
             Add to cart
           </button>
