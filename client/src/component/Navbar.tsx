@@ -10,7 +10,7 @@ const Navbar = () => {
       {/* LEFT */}
       <Link href="/" className="flex items-center">
         <Image
-          src="/logo.png"
+          src="/favicon.ico"
           alt="logo"
           width={36}
           height={36}

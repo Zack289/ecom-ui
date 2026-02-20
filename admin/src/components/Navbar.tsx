@@ -53,7 +53,7 @@ const Navbar = () => {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <Avatar>
-              <AvatarImage src="https://avatars.githubusercontent.com/u/1486366" />
+              <AvatarImage src="https://imgs.search.brave.com/eVw4DSkJ5qQoRBGKKfca8XDU_8VlAP_fN3zB0DrNLR8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMwLmNicmltYWdl/cy5jb20vd29yZHBy/ZXNzL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIyLzA0L0VyZW4t/WWVhZ2VyLSgxKS5q/cGc_cT03MCZmaXQ9/Y3JvcCZ3PTgyNSZk/cHI9MQ" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>

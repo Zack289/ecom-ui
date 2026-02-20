@@ -96,6 +96,16 @@ const formSchema = z.object({
 const AddProduct = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      shortDescription: "",
+      description: "",
+      price: 0,
+      category: undefined,
+      sizes: [],
+      colors: [],
+      images: {},
+    },
   });
   return (
     <SheetContent>
@@ -176,7 +186,10 @@ const AddProduct = () => {
                     <FormItem>
                       <FormLabel>Category</FormLabel>
                       <FormControl>
-                        <Select>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
                           <SelectTrigger>
                             <SelectValue placeholder="Select a category" />
                           </SelectTrigger>
@@ -215,7 +228,7 @@ const AddProduct = () => {
                                     field.onChange([...currentValues, size]);
                                   } else {
                                     field.onChange(
-                                      currentValues.filter((v) => v !== size)
+                                      currentValues.filter((v) => v !== size),
                                     );
                                   }
                                 }}
@@ -257,7 +270,9 @@ const AddProduct = () => {
                                       field.onChange([...currentValues, color]);
                                     } else {
                                       field.onChange(
-                                        currentValues.filter((v) => v !== color)
+                                        currentValues.filter(
+                                          (v) => v !== color,
+                                        ),
                                       );
                                     }
                                   }}
@@ -277,14 +292,21 @@ const AddProduct = () => {
                           </div>
                           {field.value && field.value.length > 0 && (
                             <div className="mt-8 space-y-4">
-                              <p className="text-sm font-medium">Upload images for selected colors:</p>
+                              <p className="text-sm font-medium">
+                                Upload images for selected colors:
+                              </p>
                               {field.value.map((color) => (
-                                <div className="flex items-center gap-2" key={color}>
+                                <div
+                                  className="flex items-center gap-2"
+                                  key={color}
+                                >
                                   <div
                                     className="w-2 h-2 rounded-full"
                                     style={{ backgroundColor: color }}
                                   />
-                                  <span className="text-sm min-w-[60px]">{color}</span>
+                                  <span className="text-sm min-w-[60px]">
+                                    {color}
+                                  </span>
                                   <Input type="file" accept="image/*" />
                                 </div>
                               ))}
